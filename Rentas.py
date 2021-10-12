@@ -1,4 +1,4 @@
-
+#Tratamiento de un archivo .csv
 import csv, os, time
 os.system('cls')
 
