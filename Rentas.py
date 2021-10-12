@@ -1,10 +1,13 @@
 
 import csv, os, time
 os.system('cls')
-FECHA_EMI = 2
 
+
+# archivo a parsear
 archivo_clientes  = "clientes.txt"
-archivo_impuestos = "IMPUESTOS.csv"
+
+#Campos de la planilla
+FECHA_EMI = 2
 tipo_doc = 80
 DOCUMENTO_INDEX = 5
 TIPO_COMPROBANTE_INDEX = 0
@@ -21,36 +24,33 @@ tipDEBA = 0
 tipDEBB = 0             
 
 def main():
-    
+#funcion main() lee archivo_impuesto (csv) y llama a la
+#funcion read_file() 
     file = read_file(archivo_impuestos)
     print(file)
 
 def rellenar_ceros(numero):
+    #rellena el campo la cantidad de ceros requerida
     j="0"
     #length of the number
     length=len(numero)
     #aumento en 1 a length para cuadrar la cantidad de ceros a agregar
     ceros_faltantes = 15 - (length+1)
-    #print(ceros_faltantes," ceros a agregar")
+    
     while ceros_faltantes > 0:
         j="0"+j
         ceros_faltantes = ceros_faltantes-1
-        #print("soy j + numero ",j+numero)
-        #print("largo de j + numero es : ", len(j+numero))
-        #time.sleep(6)
-         
+           
     return j+numero   #'''Ojo con el return, tiene q estar fuera del bucle'''
 
 def my_float(num_fl):
-    #antes
-    print("antes ",type(num_fl))
-    #funcion float conserva tal cual el nro
     flo_ = float(num_fl)
     print(type(flo_))
     print("my",flo_)
     return flo_
 
 def read_file(file_name) :
+    #funcion que abre y carga los datos de un registro a la vez
     imp_gr=""
     with open(file_name, "rt") as filename_csv:
         os.system('cls')
@@ -95,11 +95,9 @@ def read_file(file_name) :
                     #print(len(dt))
                     t = dt.strip()
                     print(t,file=d)
-               
             elif tipo_compr =='FAC' and digit=='B':
                 tipFACB = "06"
-                #print("soy tipFACB",tipFACB)
-               
+                
                 with open("DATOS.TXT", "at") as d:
                     dt = f"{parsed_date}{tipo_doc}{documen}{tipFACB}{digit}{parse_cod_lug_emi}{num_comp_parsed}{imp}{porcent_alicuo}{imp_gr}"
                     t= dt.strip()
