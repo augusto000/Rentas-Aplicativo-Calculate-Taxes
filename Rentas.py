@@ -1,9 +1,11 @@
-#Tratamiento de un archivo .csv
+# .csv file
 import csv, os, time
 os.system('cls')
-
+#customers file
 archivo_clientes  = "clientes.txt"
+#taxes file
 archivo_impuestos = "IMPUESTOS.csv"
+
 FECHA_EMI = 2
 tipo_doc = 80
 DOCUMENTO_INDEX = 5
@@ -21,6 +23,7 @@ tipDEBA = 0
 tipDEBB = 0             
 
 def main():
+     #loads the first file
      #funcion main pasa el archivo de trabajo a la funcion 
      # read_file    
     file = read_file(archivo_impuestos)
@@ -43,8 +46,10 @@ def rellenar_ceros(numero):
     return j+numero   #'''Ojo con el return, tiene q estar fuera del bucle'''
 
 def my_float(num_fl):
+    #previously
     #antes
     print("antes ",type(num_fl))
+    #keep the the number attributes
     #funcion float conserva tal cual el nro
     flo_ = float(num_fl)
     print(type(flo_))
@@ -52,6 +57,7 @@ def my_float(num_fl):
     return flo_
 
 def read_file(file_name) :
+     #begin load each item in memory
     #funcion read_file empieza a cargar cada registro y a 
     #parsearlo
     imp_gr=""
@@ -93,6 +99,7 @@ def read_file(file_name) :
             imp=rellenar_ceros(inpu)
             if tipo_compr =='FAC' and digit=='A':
                 tipFACA = "01"
+                #start saving items in DATOS.TXT
                 with open("DATOS.TXT", "at") as d:
                     #comienzo a guardar los datos parseados en el archivo
                     #datos.txt
